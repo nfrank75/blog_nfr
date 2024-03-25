@@ -1,6 +1,7 @@
 {% extends 'app_blog/base.html' %}
 
-{% block title %} {{category.title{% endblock %}
+
+{% block title %} {{category.title}} | {% endblock %}
 
 {% block content %} 
 
@@ -10,23 +11,50 @@
             <section class="section">
                 <div class="columns">
                     <div class="column is-8 is-offset-2">
-                        {% for post in category.posts.all %}
-                            <div class="content is-medium">
-                                <a href="{% url 'post_detail' post.category.slug post.slug %}">
-                                    <h2 class="subtitle is-4"> {{post.created_at|timesince }} ago</h2>
-                                    <h1 class="title">{{post.title}}</h1>
-                                    <p>{{ post.intro }}</p>
+                        <div class="content is-medium">
+                                <a href="{% url 'category_detail' category.slug  %}">
+                                    <h2 class="subtitle is-4"> {{category.created_at|timesince }} ago</h2>
+                                    <h1 class="title">{{category.title}}</h1>
                                 </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section mb-6">
+                <div class="columns">
+                    <div class="column is-8 is-offset-2">
+                        <h2 class="subtitle is-4">Posts in this category:</h2>
+                        {% if category %}
+                            {% if posts %}
+                            <ul>
+                                {% for post in posts %}
+                                    {{ post.created_at|timesince }} ago 
+                                    <li>
+                                        <a href="{% url 'post_detail' category.slug post.slug %}">
+                                            {{ post.title }}<br> 
+                                        </a>
+                                        {{ post.intro }}<br><br> 
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <div class="content">
+                                <p>There are no posts in this category...</p>
                             </div>
-                        {% endfor%}
+                        {% endif %}
+                    {% else %}
+                        <div class="content">
+                            <p>{{ error_message }}</p>
+                        </div>
+                    {% endif %}
                     </div>
                 </div>
             </section>
         </div>
     </div>
-
- </section>
+</section>
 
 {% endblock %}
+
 
 

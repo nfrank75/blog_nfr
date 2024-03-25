@@ -1,0 +1,11 @@
+ToDo List
+
+- Install software on server
+- create postgres db
+- install virtual env
+- create group & user
+- create environment
+- get project from git
+- install packages
+install and set up gurnicorn
+set up nginx

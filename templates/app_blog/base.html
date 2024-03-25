@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +30,7 @@
             <div class="navbar-brand">
                 <a class="navbar-item" href="/" >
                     <strong>Blog Nfr</strong>
-                    <!-- <img src="../images/bulma.png" alt="Logo"> -->
+                    <img src="{% static '  contabo.jpg' %}" alt="Logo">
                 </a>
                 <span class="navbar-burger burger" data-target="navbarMenu">
                     <span>1</span>
@@ -38,30 +40,26 @@
             </div>
             <div id="navbarMenu" class="navbar-menu">
                 <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div class="control has-icons-left">
-                            <input class="input is-rounded" type ='text' placeholder="Search" >
-                            <span class="icon is-left">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </div>  
-                    </div>
+                    
 
-                    <a href="" class="navbar-item is-active is-size-5 has-text-weight-semibold">
+                    <a href="/" class="navbar-item is-active is-size-5 has-text-weight-semibold">
                         Home
                     </a>
-                    <a href="" class="navbar-item is-size-5 has-text-weight-semibold">
+                    <a href="{% url 'about' %}" class="navbar-item is-size-5 has-text-weight-semibold">
                         About
                     </a>
-                    <a href="" class="navbar-item is-size-5 has-text-weight-semibold">
-                        Category
-                    </a>
-                    <a href="" class="navbar-item is-size-5 has-text-weight-semibold">
-                        Features
-                    </a>
-                    <a href="detail" class="navbar-item is-size-5 has-text-weight-semibold">
-                        Details
-                    </a>
+
+                    <div class="navbar-item">
+                        <form  method="get" action="{% url 'search' %}">
+                            <div class="control has-icons-left">
+                                <input class="input is-rounded" name="query" type ='text' placeholder="Search" >
+                                <span class="icon is-left">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -75,12 +73,9 @@
     </section>
 
     <footer class="footer">
+        
         <div class="content has-text-centered">
-            <p>
-               Copyright (c) 2024 Blog Nfrank
-                <strong> Blog - Nfr75</strong> by <a href="https://nfrank75.com">Nfr75</a>.
-                Based on the <a href="http://jigsaw-blog">Bulma</a>
-            </p>
+            Copyright (c) 2024 <a href="/"> Blog - Nfr75</a>
         </div>
 
     </footer>
